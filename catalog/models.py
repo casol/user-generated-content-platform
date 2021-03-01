@@ -7,13 +7,13 @@ from django.core.urlresolvers import reverse
 
 class Content(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             related_name='user_added',
+                             related_name='user_content',
                              on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200,
                             blank=True)
     url = models.URLField()
-    content = models.ImageField(upload_to='images/%Y/%m/%d')
+    content = models.ImageField(upload_to='content/%Y/%m/%d')
     description = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True,
                                db_index=True)
@@ -30,4 +30,4 @@ class Content(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('images:detail', args=[self.id, self.slug])
+        return reverse('content:detail', args=[self.id, self.slug])
