@@ -1,8 +1,8 @@
 from django.db import models
 
 from django.conf import settings
-from django.utils import slugify
-from django.core.urlresolvers import reverse
+from django.utils.text import slugify
+from django.urls import reverse
 
 
 class Content(models.Model):
