@@ -6,7 +6,7 @@ from .models import Content
 def index(request):
     content = Content.objects.all()
     return render(request,
-                  'catalog/index.html',
+                  'catalog/content_home.html',
                   {'content': content})
 
 
