@@ -1,1 +1,8 @@
-{{ content.title }}
+    {% load static %}
+<h1>Details</h1>
+
+
+<p>{{ content.title }}</p>
+<p>{{ content.user }}</p>
+<p>{{ content.id }}</p>
+<img src="{{ content.content.url }}" width="500" height="600">
