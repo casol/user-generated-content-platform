@@ -1,8 +1,15 @@
-    {% load static %}
-<h1>Details</h1>
+{% extends 'catalog/index.html' %}
 
-
-<p>{{ content.title }}</p>
-<p>{{ content.user }}</p>
-<p>{{ content.id }}</p>
-<img src="{{ content.content.url }}" width="500" height="600">
+{% block content %}
+    <div class="post">
+        {% if content.created %}
+            <div class="date">
+                {{ content.created }}
+            </div>
+        {% endif %}
+        
+        <h1>{{ content.title }}</h1>
+        <p>{{ content.user }}</p>
+        <img src="{{ content.content.url }}" width="500" height="600">
+    </div>
+{% endblock %}
