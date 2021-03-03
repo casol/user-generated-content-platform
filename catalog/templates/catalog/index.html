@@ -17,7 +17,13 @@
       <p>{{ item.title }}</p>
       <p></p>{{ item.user }}</p>
       <img src="{{ item.content.url }}"" width="500" height="600">
+      {{ item.title }}
+      {{ item.user }}
+      {{ item.content }}
+      {{ item.id }}
+      <img src="{{ item.content.url }}" width="500" height="600">
       
+     
     {% endfor %}
 
     <!-- Optional JavaScript -->

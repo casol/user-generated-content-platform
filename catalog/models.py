@@ -30,4 +30,4 @@ class Content(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('content:detail', args=[self.id, self.slug])
+        return reverse('catalog:content_detail', args=[str(self.id)])
