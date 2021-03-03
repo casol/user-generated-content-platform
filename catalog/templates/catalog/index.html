@@ -14,9 +14,8 @@
     <h1>Hello, world!</h1>
 
     {% for item in content %}
-      <p>{{ item.title }}</p>
+      <p><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></p>
       <p>{{ item.user }}</p>
-      <p>{{ item.id }}</p>
       <img src="{{ item.content.url }}"" width="500" height="600">
     {% endfor %}
 
