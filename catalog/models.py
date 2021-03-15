@@ -12,6 +12,7 @@ class Content(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200,
                             blank=True)
+    active = models.BooleanField(default=True)
     url = models.URLField()
     content = models.ImageField(upload_to='content/%Y/%m/%d')
     description = models.TextField(blank=True)
