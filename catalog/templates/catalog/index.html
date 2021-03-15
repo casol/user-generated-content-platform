@@ -1,44 +1,52 @@
-{% load static %}
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- Custom -->
-    <link rel="stylesheet" href="{% static 'css/catalog.css' %}">
-    <title>Hello, world!</title>
-  </head>
-  <body>
-
-      <div class="page-header">
-
-        {% if user.is_authenticated %}
-        <li>User: {{ user.get_username }}</li>
-        <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-        {% else %}
-          <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
-        {% endif %} 
-
-                <h1><a href="/">USGC</a></h1>
+<!-- Card with no padding with multiple content containers nested inside of it -->
+<div class="w-600 mw-full"> <!-- w-600 = width: 60rem (600px), mw-full = max-width: 100% -->
+  <div class="card p-0"> <!-- p-0 = padding: 0 -->
+    <img src="{{ content.content.url }}" class="img-fluid rounded-top" alt="..."> <!-- rounded-top = rounded corners on the top -->
+    <!-- First content container nested inside card -->
+    <div class="content">
+      <h2 class="content-title">
+        A long and descriptive title of the picture that is slightly pretentious
+      </h2>
+      <div>
+        <span class="text-muted">
+          <i class="fa fa-clock-o mr-5" aria-hidden="true"></i> May 4th, 2020 <!-- mr-5 = margin-right: 0.5rem (5px) -->
+        </span>
       </div>
-
-      <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-                {% block content %}
-
-                {% endblock %}
-            </div>
-        </div>
+      <div>
+        <span class="badge">
+          <i class="fa fa-comments text-primary mr-5" aria-hidden="true"></i> 5 comments <!-- text-primary = color: primary-color, mr-5 = margin-right: 0.5rem (5px) -->
+        </span>
+        <span class="badge ml-5"> <!-- ml-5 = margin-left: 0.5rem (5px) -->
+          <i class="fa fa-heart text-danger mr-5" aria-hidden="true"></i> 124 likes <!-- text-danger = color: danger-color, mr-5 = margin-right: 0.5rem (5px) -->
+        </span>
       </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+    </div>
+    <hr />
+    <!-- Second content container nested inside card (comments) -->
+    <div class="content">
+      <h2 class="content-title">
+        Comments
+      </h2>
+      <div>
+        <strong>John Doe</strong>
+        <br />
+        Amazing picture! Great job!
+      </div>
+      <hr />
+      <div>
+        <strong>Jane Doe</strong>
+        <br />
+        This is beautiful.
+      </div>
+      <hr />
+      <div>
+        <strong>James Bucks</strong>
+        <br />
+        This is just pretentious enough for my tastes. I love it.
+      </div>
+      <div class="text-center mt-20"> <!-- text-center = text-align: center, mt-20 = margin-top: 2rem (20px) -->
+        <button class="btn btn-sm">Load all comments</button>
+      </div>
+    </div>
+  </div>
+</div>
