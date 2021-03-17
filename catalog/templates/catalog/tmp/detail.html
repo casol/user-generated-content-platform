@@ -1,0 +1,10 @@
+{% extends "catalog/tmp/base.html" %}
+
+{% block title %}<title>{{ content.title }}</title>{% endblock %}
+
+{% block content %}
+    <div style="text-align:center">
+        <p>{{ content.title }}</p>
+        <img src="{{ content.content.url }}" width="600" height="600" alt="...">
+    </div>
+{% endblock %}

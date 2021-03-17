@@ -128,7 +128,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 # Auth
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'home'
 
 # EMAIL BACKEND for testing only
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
