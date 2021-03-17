@@ -4,6 +4,16 @@ from django.conf import settings
 from django.utils.text import slugify
 from django.urls import reverse
 
+from nanoid import generate
+
+
+def generate_custom_url():
+    """A tiny, secure, URL-friendly, unique string ID generator for Python."""
+    custom_url = generate(
+        '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+        8)
+    return custom_url
+
 
 class Content(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
@@ -12,8 +22,12 @@ class Content(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200,
                             blank=True)
-    url = models.URLField()
-    content = models.ImageField(upload_to='content/%Y/%m/%d')
+    custom_url = models.CharField(blank=True, null=False,
+                                  max_length=8, default=generate_custom_url)
+    active = models.BooleanField(default=True)
+    source_url = models.URLField(blank=True, null=False,
+                                 help_text="Content source URL")
+    content = models.FileField(upload_to='content/%Y/%m/%d')
     description = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True,
                                db_index=True)
@@ -30,4 +44,4 @@ class Content(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('content_detail', args=[str(self.id)])
+        return reverse('content_detail', args=[str(self.custom_url)])

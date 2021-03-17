@@ -10,8 +10,8 @@ def home(request):
                   {'content': content})
 
 
-def content_detail(request, pk):
-    obj = get_object_or_404(Content, id=pk)
+def content_detail(request, custom_url):
+    obj = get_object_or_404(Content, custom_url=custom_url)
     return render(request,
                   'catalog/content_detail.html',
                   {"content": obj})
