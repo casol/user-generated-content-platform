@@ -132,3 +132,6 @@ LOGIN_REDIRECT_URL = 'home'
 
 # EMAIL BACKEND for testing only
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Custom user auth model
+AUTH_USER_MODEL = 'account.CustomUser'
