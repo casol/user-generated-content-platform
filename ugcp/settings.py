@@ -33,13 +33,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'account.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    # 3rd party
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # apps
+    'accounts.apps.AccountsConfig',
     'catalog.apps.CatalogConfig',
 ]
 
@@ -129,6 +135,28 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Auth
 LOGIN_REDIRECT_URL = 'home'
+ACCOUNT_LOGOUT_REDIRECT_URL = 'home'
+
+# Custom user auth model
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 # EMAIL BACKEND for testing only
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# django-allauth settings
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+
+SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_UNIQUE_EMAIL = True
