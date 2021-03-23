@@ -16,6 +16,7 @@
         <div style="text-align:center">
             <p><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></p>
             <img src="{{ item.content.url }}" width="600" height="600" alt="...">
+            <p>{{ item.user.username }}</p>
         </div>
     {% endfor %}
 
